@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charsest="UTF-8">
+<title> HIMABINDU KURRA </title>
+</head>
+<body>
+<div id ="mydiv"
+onclick= "docment.getElementById('mydiv').innerHTML=Date()"> Show Date()</div>
+<p><u> Hello Everyone </u> </p>
+<p><b> I am Himabindu  </b></p>
+<p><i> I am doing my Master in Computer Science in University of Dayton </i></p>
+<p><img src="/home/seed/Desktop/index.jpeg" width="100" height="100"/> </p>
+<p> <a href="http://www.google.com"> Google.com </a></p>
+</body>
+</html>

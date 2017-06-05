@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charsest="UTF-8">
+<title> HIMABINDU KURRA </title>
+</head>
+<body>
+
+<p><u> Hello Everyone </u> </p>
+<p><b> I am Himabindu  </b></p>
+<p><i> I am doing my Master in Computer Science in University of Dayton </i></p>
+<p><img src="/home/seed/Desktop/index.jpeg" width="100" height="100"/> </p>
+<p> <a href="http://www.google.com"> Google.com </a></p>
+
+<div id ="mydiv"
+onclick= "document.getElementById('mydiv').innerHTML=Date()"> Show Date()</div>
+
+
+<div id ="email" onclick="showhide()"> show my email</div>
+<script>
+var shown=false;
+function showhide(){
+if(shown){
+document.getElementById('email').innerHTML="show my email";
+shown = false;
+}else{
+var myemail ="<a href='mailto:phu"+ "@" + "udayton.edu'>phu" + "@" + "udayton.edu</a>";
+
+document.getElementById('email').innerHTML=myemail;
+shown=true;
+}
+}
+
+</script>
+<script>
+function startTime(){
+doucment.getElementById('clock').innerHTML=new Date();
+setTimeout(startTime,500);
+}
+</script>
+<body onload="startTime()">
+<div id="clock"></div>
+
+</body>
+</html>

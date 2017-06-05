@@ -1,0 +1,22 @@
+
+//Construct string from substrings-can be used to construct HTTP Request
+//sends formaTed output to a string pointed to, by str
+
+char str[80];
+char *host="gaia.cs.umass.edu";
+char *host, *path;
+sprintf(str, "Host: %s\r\n\r\n Path: %s\r\n\r\n", host,path);
+
+//Reads formaTed input from a string
+int sscanf(const char *str,const char *format, ...)
+
+//Can be used to parse the hostname and path from input – url format:
+sscanf(url,"http://%[^/]/%s",host,path);
+
+Parse the HTTP response code – format:
+sscanf(status,"HTTP/1.%*[01] %d.c "
+
+int day, year;
+char weekday[20], month[20],dtm[100];
+strcpy(dtm, "Saturday March 25 1989" );
+sscanf(dtm, "%s %s %d %d", weekday, month, &day, &year );
