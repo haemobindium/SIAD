@@ -1,0 +1,85 @@
+
+<!-- saved from url=(0159)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/2942b07b-2e24-46db-bbf6-4f5974de8e3c/newuserform.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./newuserform.php.txt_files/other.jpg">
+
+<div style="margin:0 auto; text-align:center; width:800px">
+<!--?php
+
+//some code here
+//require "auth.php";
+echo "Current time: " . date("Y-m-d h:i:sa");
+$rand = bin2hex(openssl_random_pseudo_bytes(16));
+//echo "\$rand = $rand";
+$_SESSION["nocsrftoken"]= $rand;
+?-->
+
+
+<form name="newuserform" action="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/2942b07b-2e24-46db-bbf6-4f5974de8e3c/adduser.php" method="POST">
+<input type="hidden" name="secrettoken" value="&lt;?php echo $rand; ?&gt;"> <br>
+
+
+<font size="4"><b> Add user form</b></font>
+
+<br>
+<br>
+
+Username
+<br>
+<input type="text" required="" pattern="\w+" size="25" name="newusername">
+
+<br>
+<br>
+
+Password
+<br>
+<input type="text" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" size="25" name="newpassword" <="" td="">
+
+
+<br>
+Confirm Password
+<br>
+<input type="text" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" size="25" name="newpassword2" <="" td=""> <!--- to do: check the password patterns and the values are the same --->
+
+<br>
+<br>
+
+
+
+
+<input type="Reset">
+
+<input type="Submit" value="Create new user">
+
+
+
+</form>
+<br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/2942b07b-2e24-46db-bbf6-4f5974de8e3c/index.php"> Welcome page </a>
+<br>
+<script>
+
+function validateForm() {
+	 var regex=/^\w+$/;
+    var x = document.forms["loginform"]["username"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+	return false;
+	}
+	if(!regex.test(username)){
+		alert("Username must contains only letters, numbers and underscores!");
+		document.forms["loginform"]["username"].focus();
+		return false;
+	}
+       	
+}
+ 
+   
+</script>
+
+
+</div>
+
+
+
+
+</body></html>

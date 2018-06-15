@@ -1,0 +1,49 @@
+
+<!-- saved from url=(0154)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/f76e2f84-ab65-4feb-8e5a-8b1dbb4dfc00/delete.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./delete.php.txt_files/other.jpg">
+
+<div style="margin:0 auto; text-align:center; width:800px">
+<!--?php
+
+$mysqli=new mysqli('localhost', 'root', 'seedubuntu', 'SIAD_lab7');
+
+if($mysqli--->connect_error){
+die('Connection to database has eeror: '.$mysqli-&gt;connect_error);
+}
+$id = intval($_GET['postid']);
+function deletepost($postid,$content){
+
+$sql="Delete from  posts  where postid='$postid';";
+
+echo "sql = $sql <br>";
+
+global $mysqli;
+
+$result = $mysqli-&gt;query($sql);
+
+
+if ($result == TRUE) {
+ echo " Post '$postid' has been deleted <br> ";
+ 
+}
+else{
+echo "Cannot delete post '$postid':"  .$mysqli-&gt;error;
+
+}
+
+}
+
+    //$id = $_REQUEST["postid"];
+
+    if(isset($id) ){
+        deletepost($id);
+    }
+
+
+?&gt;
+	 <br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/f76e2f84-ab65-4feb-8e5a-8b1dbb4dfc00/index.php"> Welcome page </a>
+<br>
+</div>
+
+</body></html>

@@ -1,0 +1,67 @@
+
+<!-- saved from url=(0155)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/29a1e686-92bf-40ea-ad01-5140ff41ec16/adduser.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./adduser.php.txt_files/other.jpg">
+
+<div style="margin:0 auto; text-align:center; width:800px">
+<!--?php
+
+	
+   // require "auth.php";
+	//$secrettoken = $_POST["secrettoken"];
+	//echo "debug--> \$secrettoken =$secrettoken <br> \$_SESSION[\"nocsrftoken\"]=".$_SESSION["nocsrftoken"];
+	//if(!isset($secrettoken) or ($secrettoken != $_SESSION["nocsrftoken"])){
+	//	echo"Cross site request forgery is detected";
+	//	die;
+	//}	
+
+
+//$_SESSION["nocsrftoken"];
+
+	$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+	if($mysqli-&gt;connect_error){
+		die('Connection to the database has error: ' . $mysqli-&gt;connect_error); 
+	}
+
+    function adduser($username, $password){
+
+	$username=mysql_real_escape_string($username);
+	$password=mysql_real_escape_string($password);
+        $sql = "INSERT INTO users VALUES ('$username', password('$password'));";
+	//$sql = "INSERT INTO users (username,password) VALUES ('$username', password('$password'));";
+        //just debug
+        echo "sql = $sql";
+        global $mysqli;
+        $result = $mysqli-&gt;query($sql);
+
+
+        if($result == TRUE){
+            echo "New user '$username' has been added";
+        }else
+        {
+            echo "Cannot add the user '$username':"  .$mysqli-&gt;error;
+        }
+
+       
+    }
+
+
+    $username = $_REQUEST["newusername"];
+    $password = $_REQUEST["newpassword"];
+    
+
+	echo "debug&gt; NewUsername= $username; Newpassword=$password <br>";
+    if(isset($username) and isset($password)){
+        adduser($username, $password);
+	
+    }
+       
+?&gt;
+<br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/29a1e686-92bf-40ea-ad01-5140ff41ec16/index.php"> Click here to direct to the previous page </a>
+<br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/29a1e686-92bf-40ea-ad01-5140ff41ec16/changepasswordform.php"> Change your password </a>
+<br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/29a1e686-92bf-40ea-ad01-5140ff41ec16/logout.php">Click here to logout</a>
+</div>
+
+</body></html>

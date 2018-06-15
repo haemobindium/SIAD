@@ -1,0 +1,60 @@
+
+<!-- saved from url=(0158)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/96252c3b-85ad-4eb0-8950-7e95d0d7918c/updateform.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+<body><form action="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/96252c3b-85ad-4eb0-8950-7e95d0d7918c/edit.php" method="post">
+ Enter POSTID that you want to edit:<br>
+ <input type="text" name="postid"><br>
+  Enter TITLE that you want to edit:<br>
+ <input type="text" name="title"><br>
+Enter CONTENT that you want to edit:<br>
+<textarea name="content" rows="20" cols="50"></textarea><br>
+   <input type="submit" value="Submit">
+ </form>
+
+
+<!--?php
+
+$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+//$mysqli = new mysqli('localhost', 'root', 'seedubuntu', 'SIAD_lab7');
+
+if($mysqli--->connect_error){
+die('Connection to database has error: '.$mysqli-&gt;connect_error);
+
+}
+$id = intval($_GET['postid']);
+$sql = "select * from posts where postid='$id';"; 
+$result = $mysqli-&gt;query($sql);
+if ($result-&gt;num_rows &gt; 0) {
+echo "";
+
+// echo "";
+
+}
+ return TRUE;
+}
+else{
+echo "No post yet";
+}
+
+?&gt;
+
+<br><a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/96252c3b-85ad-4eb0-8950-7e95d0d7918c/index.php"> Welcome page </a><br><table><tbody><tr><th>postid</th><th>title</th><th>content</th><th>owner";
+
+while($row=$result-&gt;fetch_assoc()){
+
+echo "</th></tr><tr><td>". htmlentities($row['postid']). "</td><td>". htmlentities($row['title']). "</td><td>".  htmlentities($row['content'] )."</td><td>". htmlentities($row['owner']). "</td></tr><tr><td>".$row["id"]."</td><td>".$row["firstname"]." ".$row["lastname"]."</td></tr>
+
+
+
+
+
+
+
+
+</tbody></table></body></html>

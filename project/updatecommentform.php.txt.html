@@ -1,0 +1,59 @@
+
+<!-- saved from url=(0165)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/70e4eac4-a971-48fa-82ad-a5b4db828cf6/updatecommentform.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+</head><body background="./updatecommentform.php.txt_files/other.jpg"><div style="margin:0 auto; text-align:center; width:800px">
+
+
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+
+<form action="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/70e4eac4-a971-48fa-82ad-a5b4db828cf6/editcomment.php" method="post">
+  Enter the commentid that you want to edit:<br>
+ <input type="text" name="commentid"><br>
+Enter the content  that you want to edit:<br>
+<input type="text" name="content"><br>
+   <input type="submit" value="Submit">
+ </form>
+
+
+<!--?php
+
+$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+//$mysqli = new mysqli('localhost', 'root', 'seedubuntu', 'SIAD_lab7');
+
+if($mysqli--->connect_error){
+die('Connection to database has error: '.$mysqli-&gt;connect_error);
+
+}
+$id = intval($_GET['postid']);
+$sql = "select * from comments where postid='$id';"; 
+$result = $mysqli-&gt;query($sql);
+if ($result-&gt;num_rows &gt; 0) {
+echo "";
+
+while($row=$result-&gt;fetch_assoc()){
+
+echo "";
+
+}
+ return TRUE;
+}
+else{
+echo "No post yet";
+}
+
+?&gt;
+
+<br><a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/70e4eac4-a971-48fa-82ad-a5b4db828cf6/index.php"> Welcome page </a><br><table><tbody><tr><th>commentid</th><th>title</th><th>content</th><th>commenter</th><th>postid</th></tr><tr><td>". htmlentities($row['commentid']). "</td><td>". htmlentities($row['title']). "</td><td>".  htmlentities($row['content'] )."</td><td>". htmlentities($row['commenter']). "</td><td>". htmlentities($row['postid']). "</td></tr>
+
+
+
+
+
+
+
+
+</tbody></table></div></body></html>

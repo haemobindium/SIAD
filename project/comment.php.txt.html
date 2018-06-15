@@ -1,0 +1,86 @@
+
+<!-- saved from url=(0155)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/207e7f7a-b6aa-4d41-a497-27ccccf0a21f/comment.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./comment.php.txt_files/other.jpg">
+
+<div style="margin:0 auto; text-align:center; width:800px">
+<!--?php
+
+//require 'auth.php';
+echo "Current time: " . date("Y-m-d h:i:sa");
+
+	$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+	
+	if($mysqli--->connect_error){
+		die('Connection to the database has error: ' . $mysqli-&gt;connect_error); 
+	}
+	$id = intval($_GET['postid']);
+	$sql = "SELECT * from posts where postid = $id;";
+	
+	$result = $mysqli-&gt;query($sql);	
+	$row = $result-&gt;fetch_assoc();
+	
+	if($id &gt; 0){
+		
+			echo "<h3>Post".$id."-".$row["title"]."</h3><br>";
+			echo $row["content"]."<br><br>";
+			
+			
+                        $sql1 = "SELECT * from comments WHERE postid= $id;";
+			$result1 = $mysqli-&gt;query($sql1);
+			if($result1-&gt;num_rows&gt;0){
+				
+				echo "";
+		
+
+				while($row = mysqli_fetch_array($result1))
+				{
+					echo "";
+					echo "";
+					echo "";
+					echo "";
+					echo "";
+					echo "";
+					echo "";
+					echo "";
+				}
+				echo "<table border="1">
+				<tbody><tr>
+				<th>Title</th>
+				<th>Content</th>
+				<th>Commenter</th>
+				<th>Commentid</th>
+				<th>Time</th>
+				<th>Postid</th>	
+
+				</tr><tr><td>" . $row['title'] . "</td><td>" . $row['content'] . "</td><td>" . $row['commenter'] . "</td><td>" . $row['commentid'] . "</td><td>" . $row['time'] . "</td><td>" . $row['postid'] . "</td></tr></tbody></table><br>";
+				echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/207e7f7a-b6aa-4d41-a497-27ccccf0a21f/commentpost.php?postid=$id">";
+				echo "Add a comment</a><br>";
+
+	
+				echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/207e7f7a-b6aa-4d41-a497-27ccccf0a21f/updatecommentform.php?postid=$id">";
+				echo "Edit a comment</a><br>";
+
+				echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/207e7f7a-b6aa-4d41-a497-27ccccf0a21f/deleteform.php?postid=$id">";
+				echo "Delete a comment</a><br>";
+							
+			} else{
+				
+				echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/207e7f7a-b6aa-4d41-a497-27ccccf0a21f/commentpost.php?postid=$id">";
+				echo "Post your first comment</a><br>";	
+						
+				}
+			
+				}else{
+					echo "No post in the blog yet";	
+				}
+	
+
+?&gt;
+<br>
+	<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/207e7f7a-b6aa-4d41-a497-27ccccf0a21f/index.php"> Welcome page </a>
+	<br>
+</div>
+
+
+
+</body></html>

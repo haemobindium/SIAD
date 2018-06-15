@@ -1,0 +1,56 @@
+
+<!-- saved from url=(0152)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/5c5dce79-596e-4662-9fd4-7971925b16eb/edit.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./edit.php.txt_files/other.jpg">
+
+<div style="margin:0 auto; text-align:center; width:800px">
+<!--?php
+
+$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+
+
+if($mysqli--->connect_error){
+die('Connection to database has eeror: '.$mysqli-&gt;connect_error);
+
+
+}
+
+function updatepost($postid,$content,$title){
+
+$sql="update posts set content ='$content',title='$title' where postid='$postid';";
+
+echo "sql = $sql";
+
+global $mysqli;
+
+$result = $mysqli-&gt;query($sql);
+
+
+if ($result == TRUE) {
+ echo " post '$postid' has been updated <br> ";
+ 
+}
+else{
+//echo "Cannot edit post '$postid':"  .$mysqli-&gt;error;
+
+}
+}
+
+   $postid = $_REQUEST["postid"];
+    $content = $_REQUEST["content"];
+    $title = $_REQUEST["title"];
+
+    echo "debug&gt; Postid= $postid; Title= $title;  Content=$content <br>";
+    if(isset($postid) and isset($content) and isset($title)){
+        updatepost($postid,$content,$title);
+    }
+
+
+?&gt;
+ <br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/5c5dce79-596e-4662-9fd4-7971925b16eb/index.php"> Welcome page </a>
+<br>
+</div>
+
+
+
+</body></html>

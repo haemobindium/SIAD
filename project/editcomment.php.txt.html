@@ -1,0 +1,56 @@
+
+<!-- saved from url=(0159)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/ce2d2713-529f-4de5-a5b7-a0839398094f/editcomment.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./editcomment.php.txt_files/other.jpg">
+
+<div style="margin:0 auto; text-align:center; width:800px">
+<!--?php
+
+$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+
+
+if($mysqli--->connect_error){
+die('Connection to database has eeror: '.$mysqli-&gt;connect_error);
+
+
+}
+
+function updatecomment($commentid,$content){
+
+$sql="UPDATE comments SET content ='$content' where commentid='$commentid';";
+
+echo "sql = $sql";
+
+global $mysqli;
+
+$result = $mysqli-&gt;query($sql);
+
+
+if ($result == TRUE) {
+ echo " Comment '$commentid' has been updated <br> ";
+ 
+}
+else{
+echo "Cannot edit comment '$commentid':"  .$mysqli-&gt;error;
+
+}
+}
+
+    $commmentid = $_REQUEST["commentid"];
+    $content = $_REQUEST["content"];
+    
+
+    echo "debug&gt; Commentid= $commentid;  Content=$content <br>";
+    if(isset($commentid) and isset($content)){
+        updatecomment($commentid,$content);
+    }
+
+
+?&gt;
+ <br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/ce2d2713-529f-4de5-a5b7-a0839398094f/index.php"> Welcome page </a>
+<br>
+</div>
+
+
+
+</body></html>

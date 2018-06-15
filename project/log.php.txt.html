@@ -1,0 +1,73 @@
+
+<!-- saved from url=(0151)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/0d0f41dc-dd9e-4f9b-8a98-b2b5989f3dd5/log.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./log.php.txt_files/theme15.jpg"><br><br><br><br><br>
+<!--?php
+require "auth.php";
+echo "Current time: ".date("Y-m-d h:i:sa");
+?-->
+
+
+
+<form name="loginform" action="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/0d0f41dc-dd9e-4f9b-8a98-b2b5989f3dd5/auth.php">
+
+<div style="margin:0 auto; text-align:center; width:800px">
+
+
+<br><br><br><br><br>
+
+<b><h1 style="color:#00FF00">Welcome to Login Page</h1></b>
+
+<br>
+<br>
+
+<h2 style="color:red">Username</h2>
+<br>
+<input type="text" size="26" name="username">
+
+<br>
+<br>
+
+<h2 style="color:red">Password</h2>
+<br>
+<input type="password" size="26" name="password">
+
+
+<br>
+<br>
+
+
+
+
+<input type="Reset">
+
+<input type="Submit" onclick="validateForm(this.form)" value="Submit">
+
+</div> 
+
+</form>
+
+<script>
+
+function validateForm() {
+	 var regex=/^\w+$/;
+    var x = document.forms["loginform"]["username"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+	return false;
+	}
+	if(!regex.test(username)){
+		alert("Username must contains only letters, numbers and underscores!");
+		document.forms["loginform"]["username"].focus();
+		return false;
+	}
+       	
+}
+   
+</script>
+
+
+
+
+
+
+</body></html>

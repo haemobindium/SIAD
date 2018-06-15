@@ -1,0 +1,56 @@
+
+<!-- saved from url=(0158)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e78389d5-ad3e-4037-99b3-fbb1af60c0a1/deleteform.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+</head><body background="./deleteform.php.txt_files/other.jpg"><div style="margin:0 auto; text-align:center; width:800px">
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+
+<form action="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e78389d5-ad3e-4037-99b3-fbb1af60c0a1/deletecomment.php" method="post">
+  Enter the commentid that you want to delete:<br>
+ <input type="text" name="commentid"><br>
+   <input type="submit" value="Submit">
+ </form>
+
+
+
+
+<!--?php
+$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+
+if($mysqli--->connect_error){
+die('Connection to database has error: '.$mysqli-&gt;connect_error);
+
+
+}
+$id = intval($_GET['postid']);
+$sql = "select * from comments where postid=$id;"; 
+$result = $mysqli-&gt;query($sql);
+if ($result-&gt;num_rows &gt; 0) {
+	echo "";
+
+	while($row=$result-&gt;fetch_assoc()){
+
+	echo "";
+
+	// echo "";
+
+}
+
+ return TRUE;
+}
+else{
+echo "No post yet";
+}
+?&gt;
+ 
+<br><a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e78389d5-ad3e-4037-99b3-fbb1af60c0a1/index.php"> Welcome page </a><br><table><tbody><tr><th>Commentid</th><th>Title</th><th>Content</th><th>Owner</th><th>Postid</th></tr><tr><td>". htmlentities($row['commentid']). "</td><td>". htmlentities($row['title']). "</td><td>".  htmlentities($row['content'] )."</td><td>". htmlentities($row['commenter']). "</td><td>". htmlentities($row['postid']). "</td></tr><tr><td>".$row["id"]."</td><td>".$row["firstname"]." ".$row["lastname"]."</td></tr>
+
+
+
+
+
+
+</tbody></table></div></body></html>

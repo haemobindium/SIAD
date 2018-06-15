@@ -1,0 +1,182 @@
+<?php
+session_start();
+
+
+$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+
+if($mysqli->connect_error){
+die('Connection to database has eeror: '.$mysqli->connect_error);
+
+
+}
+
+
+
+function checklogin($username,$password){
+
+	$sql= "SELECT * from users where username='$username' and password =password('$password'); ";
+
+echo "sql= $sql";
+
+global $mysqli;
+
+
+//just debug
+
+
+
+
+
+
+
+$result = $mysqli->query($sql);
+if ($result->num_rows > 0) {
+ echo "username/password found <br>";
+ return TRUE;
+}
+else{
+ echo "username/password NOT found <br>";
+return FALSE; 
+}
+}
+
+
+
+
+
+/*if($username=="admin" and $password == "Abc123")
+{     return TRUE;
+
+}
+return FALSE;
+}
+
+*/
+
+
+function checklogin_old($username,$password){
+
+if($username=="admin" and $password == "Abc123")
+{     return TRUE;
+
+}
+return FALSE;
+}
+echo "Index page<br>";
+
+
+$username=($_REQUEST["username"]);
+$password=($_REQUEST["password"]);
+
+
+//echo "you have not logged in." ;
+//echo"<debug> Username =$username;password=$password";
+
+
+if(isset($username) and isset($password)){
+
+ $username = mysql_real_escape_string($username);
+ $password = mysql_real_escape_string($password);
+
+echo "entered the usename and password <br> ";
+
+
+if(checklogin($username,$password)){
+
+echo "Valid usernsme and password ! Welcome! <br>";
+
+$_SESSION["logged"] = TRUE;
+
+$_SESSION["username"]=$username;
+
+$_SESSION["browser"]=$_SERVER["HTTP_USER_AGENT"];
+$_SESSION["browser1"]=$_SERVER["HTTP_ACCEPT"];
+
+$_SESSION["browser2"]=$_SERVER["REMOTE_ADDR"];
+
+
+
+
+$_SESSION['timeout'] = time();
+
+
+//echo "DEBUG \$_SESSION[\"browser\"]= ".$_SESSION["browser"];
+
+//echo "DEBUG \$_SESSION[\"browser1\"]= ".$_SESSION["browser1"];
+
+//echo "DEBUG \$_SESSION[\"browser2\"]= ".$_SESSION["browser2"];
+
+
+
+
+}
+
+else{
+
+//header("refresh: 1; url= login.php");
+
+echo "Invalid username or password <br>";
+
+session_destroy();
+}
+
+
+}
+
+
+if(isset($_SESSION["logged"])){
+echo "welcome back you have logged in .<br>";
+
+echo "<a href='logout.php'>Click here to logout </a>";
+
+}
+
+else{
+
+
+//header("refresh: 1; url= login.php");
+
+echo "You have not logged in";
+
+session_destroy();
+}
+
+
+
+
+if($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]){
+
+echo "Session hijacking is detected";
+die();
+
+}
+
+
+
+if($_SESSION["browser1"] != $_SERVER["HTTP_ACCEPT"]){
+
+echo "Session hijacking is detected from http_accept";
+die();
+
+}
+
+
+
+if($_SESSION["browser2"] != $_SERVER["REMOTE_ADDR"]){
+
+echo "Session hijacking is detected from remote_addr";
+die();
+
+}
+
+
+if ($_SESSION['timeout'] + 20 * 60 < time()) {
+     // session timed out
+header("refresh: 1; url= login.php");
+  } else {
+     echo"session ok";
+  }
+
+
+
+?>

@@ -1,0 +1,54 @@
+
+<!-- saved from url=(0155)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e75fa3e9-75cd-4c44-9fb9-9a14f74e58ca/addpost.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./addpost.php.txt_files/other.jpg">
+
+<div style="margin:0 auto; text-align:center; width:800px">
+<!--?php
+
+	$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+	if($mysqli--->connect_error){
+		die('Connection to the database has error: ' . $mysqli-&gt;connect_error); 
+	}
+
+
+    function addpost($owner, $title, $content){
+
+        $sql = "INSERT INTO posts (owner,title,content) VALUES ('$owner', '$title','$content');";
+        //just debug
+
+        echo "sql = $sql";
+        global $mysqli;
+        $result = $mysqli-&gt;query($sql);
+
+
+        if($result == TRUE){
+            echo "New post '$title' has been added";
+        }else
+        {
+            echo "Cannot add the post '$title':" .$mysqli-&gt;error;
+		
+
+        }
+
+       
+    }
+    
+	$owner=$_REQUEST["owner"];
+	$title=$_REQUEST["title"];
+	$content=$_REQUEST["content"];
+	
+	echo "debug&gt; owner= $owner; title=$title; content=$content <br>";
+    if(isset($owner) and isset($title) and isset($content)){
+        addpost($owner, $title, $content);
+	
+    }
+
+       
+?&gt;
+<br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e75fa3e9-75cd-4c44-9fb9-9a14f74e58ca/index.php"> Welcome page </a>
+<br>
+</div>
+
+
+</body></html>

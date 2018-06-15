@@ -1,0 +1,100 @@
+
+<!-- saved from url=(0153)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/index.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./index.php.txt_files/other.jpg"><br>
+<br>
+<div style="margin:0 auto; text-align:center; width:800px">
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/newpostform.php"> New Post </a>
+<br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/changepasswordform.php"> Change your password </a>
+<br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/newuserform.php"> Add new user </a>
+<br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/websocketchat1.html">Chat</a>
+<br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/logout.php">Click here to logout</a>
+<br>
+<br>
+
+<div id="mySidenav" class="sidenav">
+  <a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/websocketchat1.html" id="Chat">Chat</a>
+</div>&gt;
+<style type="text/css"> 
+#mySidenav a {
+    position: absolute; /* Position them relative to the browser window */
+    left: -80px; /* Position them outside of the screen */
+    transition: 0.3s; /* Add transition on hover */
+    padding: 15px; /* 15px padding */
+    width: 100px; /* Set a specific width */
+    text-decoration: none; /* Remove underline */
+    font-size: 20px; /* Increase font size */
+    color: white; /* White text color */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+}
+
+#mySidenav a:hover {
+    left: 0; /* On mouse-over, make the elements appear as they should */
+}
+
+#chat {
+    top: 150px;
+    background-color: #990099; /* Yellow */
+}
+</style>
+
+
+
+<!--?php
+
+//require 'auth.php';
+echo "Current time: " . date("Y-m-d h:i:sa");
+
+$mysqli = new mysqli('localhost', 'root', 'seedubuntu', 'SIAD_lab7');
+	if($mysqli--->connect_error){
+		die('Connection to the database has error: ' . $mysqli-&gt;connect_error); 
+	}
+
+	$sql = "SELECT * from posts;";
+	$result = $mysqli-&gt;query($sql);	
+	if($result-&gt;num_rows &gt;0){
+		//echo "";
+		while($row = $result-&gt;fetch_assoc()){
+			$postid = $row["postid"];
+			echo "<h3>Post".$postid."-".$row["title"]."</h3><br>";
+			echo $row["content"]."<br>";
+			echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/comment.php?postid=$postid">";
+			$sql = "SELECT * FROM comments WHERE postid='$postid';";
+			$comments = $mysqli-&gt;query($sql);
+			if($comments-&gt;num_rows&gt;0){
+				echo $comments-&gt;num_rows."comments</a><br>";
+				
+				echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/updateform.php?postid=$postid">";
+							echo "Edit Post</a><br>";
+
+				echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/delete.php?postid=$postid">";
+							echo "Delete Post</a><br>";
+				
+							
+			} else{
+				echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/commentpost.php?postid=$postid">";
+				echo "Post your first comment</a><br>";
+				echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/updateform.php?postid=$postid">";
+							echo "Edit Post</a><br>";
+
+				echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/delete.php?postid=$postid">";
+							echo "Delete Post</a><br>";
+				
+				}
+			}
+	}else{
+		echo "No post in the blog yet<br>";	
+		echo "<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/e28f7cfd-6836-4dfc-a397-044bc03e0408/newpostform.php?postid=$postid">";
+				echo "Add your first post</a><br>";
+		
+
+	}
+	
+
+?&gt;
+<table>
+
+</table></div></body></html>

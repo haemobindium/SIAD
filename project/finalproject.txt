@@ -1,0 +1,70 @@
+Final Project - Returned
+Title	Final Project
+Student	Himabindu Kurra
+Submitted Date	Jun 23, 2017 8:57 pm
+Grade	93.00	(max 100.00)
+History	Fri Jun 23 20:15:35 EDT 2017 Himabindu Kurra (101508675) saved draft
+Fri Jun 23 20:57:14 EDT 2017 Himabindu Kurra (101508675) submitted
+Instructions
+Design and Implement a Simple Blog System:
+
+Regular users
+Must be authenticated with username/password from database
+Can create a new post, edit or delete a post (belong to the author)
+(Optional) Can chat with other online (logged-in) users (integrated with the Web Chat System in Lab 10)
+Displays online users and all sent messages from users
+If someone is typing, display that real-time information
+Guests, no authentication
+Can view and comment on a post
+All security issues including session hijacking, cross-site request forgery, cross-site scripting, and SQL Injection attacks must be identified and implemented.
+SUBMISSION:
+
+All source code in separate files (you can change the file name to *.php.txt)
+Exported database in SQL. You can use the following command to export your database to a .sql file (rename it to .sql.txt to submit):
+$ mysqldump --add-drop-table -u root -pseedubuntu dbname > dbname.sql
+(Where dbname is the database name used in your project.)
+
+PDF presentation and report/screenshots (IF ANY, not required)
+Submit all required files in Isidore by 9:00 PM, Friday, June 23, 2017. Only one member of the group should submit the files.
+
+ 
+
+Submitted Attachments
+File attachment addpost.php.txt ( 1 KB; Jun 23, 2017 8:07 pm )
+File attachment adduser.php.txt ( 2 KB; Jun 23, 2017 8:07 pm )
+File attachment admin.php.txt ( 1 KB; Jun 23, 2017 8:07 pm )
+File attachment auth.php.txt ( 3 KB; Jun 23, 2017 8:08 pm )
+File attachment changepassword.php.txt ( 1 KB; Jun 23, 2017 8:08 pm )
+File attachment changepasswordform.php.txt ( 1 KB; Jun 23, 2017 8:08 pm )
+File attachment comment.php.txt ( 2 KB; Jun 23, 2017 8:08 pm )
+File attachment commentpost.php.txt ( 2 KB; Jun 23, 2017 8:08 pm )
+File attachment delete.php.txt ( 1 KB; Jun 23, 2017 8:08 pm )
+File attachment deletecomment.php.txt ( 1 KB; Jun 23, 2017 8:09 pm )
+File attachment deleteform.php.txt ( 1 KB; Jun 23, 2017 8:09 pm )
+File attachment edit.php.txt ( 1 KB; Jun 23, 2017 8:09 pm )
+File attachment editcomment.php.txt ( 1 KB; Jun 23, 2017 8:09 pm )
+File attachment index.php.txt ( 3 KB; Jun 23, 2017 8:09 pm )
+File attachment log.php.txt ( 1 KB; Jun 23, 2017 8:10 pm )
+File attachment logout.php.txt ( 1 KB; Jun 23, 2017 8:10 pm )
+File attachment new.php.txt ( 1 KB; Jun 23, 2017 8:10 pm )
+File attachment newpostform.php.txt ( 1 KB; Jun 23, 2017 8:10 pm )
+File attachment newuserform.php.txt ( 2 KB; Jun 23, 2017 8:10 pm )
+File attachment SIAD_lab7.sql ( 0 KB; Jun 23, 2017 8:12 pm )
+File attachment SIADChatServer.java.txt ( 8 KB; Jun 23, 2017 8:12 pm )
+File attachment updatecommentform.php.txt ( 1 KB; Jun 23, 2017 8:13 pm )
+File attachment updateform.php.txt ( 1 KB; Jun 23, 2017 8:13 pm )
+File attachment websocketchat1.html.txt ( 3 KB; Jun 23, 2017 8:13 pm )
+File attachment theme15.jpg ( 2 MB; Jun 23, 2017 8:14 pm )
+File attachment themeother.jpg ( 642 KB; Jun 23, 2017 8:14 pm )
+File attachment other.jpg ( 139 KB; Jun 23, 2017 8:15 pm )
+File attachment HimabinduKurra_Project.pdf ( 3 MB; Jun 23, 2017 8:57 pm )
+Additional instructor's comments about your submission
+Very good project for just an individual. There are several things can be improved:
+
+- The user should not type id to modify it
+
+-  When editing something, the current content should be displayed
+
+- Security issues should be identified and implemented. 
+
+Back to list

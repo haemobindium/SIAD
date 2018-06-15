@@ -1,0 +1,52 @@
+
+<!-- saved from url=(0161)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/49120e82-c529-49f5-9f76-f49715664a7f/deletecomment.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body background="./deletecomment.php.txt_files/other.jpg">
+
+<div style="margin:0 auto; text-align:center; width:800px">
+<!--?php
+
+
+$mysqli=new mysqli('localhost', 'SIAD_lab7', 'secretpass', 'SIAD_lab7');
+
+if($mysqli--->connect_error){
+die('Connection to database has eeror: '.$mysqli-&gt;connect_error);
+
+
+}
+//$id = intval($_GET['commentid']);
+function deletecomment($commentid){
+
+$sql="Delete from  comments  where commentid='$commentid';";
+
+echo "sql = $sql";
+
+global $mysqli;
+
+$result = $mysqli-&gt;query($sql);
+
+
+if ($result == TRUE) {
+ echo " Comment '$commentid' has been deleted <br> ";
+ 
+}
+else{
+echo "Cannot delete comment '$commentid':"  .$mysqli-&gt;error;
+
+}
+
+
+}
+
+   $commentid = $_REQUEST["commentid"];
+        
+    if(isset($commentid) ){
+        deletecomment($commentid);
+    }
+
+?&gt;
+<br>
+	<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/49120e82-c529-49f5-9f76-f49715664a7f/index.php"> Welcome page </a>
+	<br>
+</div>
+
+</body></html>

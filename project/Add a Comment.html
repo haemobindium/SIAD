@@ -1,0 +1,74 @@
+
+<!-- saved from url=(0159)https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/0d996129-9b2e-4565-b958-e1345995f7c1/commentpost.php.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title> Add a Comment </title>
+</head>
+<body background="./Add a Comment_files/other.jpg">
+<div style="margin:0 auto; text-align:center; width:800px">
+<h3> New Comment</h3>
+<form action="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/0d996129-9b2e-4565-b958-e1345995f7c1/commentpost.php" method="post">
+PostId:<br>
+<input name="postid" required=""><br>
+Author:<br>
+  <input type="text" name="commenter" required=""><br>
+  Title:<br>
+  <input type="text" name="title" required=""><br>
+  
+Text:<br>
+<textarea name="content" rows="20" cols="50"></textarea>
+  <br><br>
+ <input type="submit" name="submit" value="Add Comment">
+ <br><br>
+<a href="https://isidore.udayton.edu/access/content/attachment/62fa49ff-dd58-4ca9-b6e6-5c0d64c65734/Assignments/0d996129-9b2e-4565-b958-e1345995f7c1/index.php"> Welcome page </a>
+<br>
+</form>
+
+</div>
+<!--?php
+
+	$mysqli = new mysqli('localhost', 'root', 'seedubuntu', 'SIAD_lab7');
+	if($mysqli--->connect_error){
+		die('Connection to the database has error: ' . $mysqli-&gt;connect_error); 
+	}
+
+
+    function commentpost($commenter, $title, $content, $postid){
+	
+        $sql = "INSERT INTO comments (commenter,title,content,postid) VALUES ('$commenter', '$title','$content',$postid);";
+        //just debug
+
+        echo "sql = $sql";
+        global $mysqli;
+        $result = $mysqli-&gt;query($sql);
+
+
+        if($result == TRUE){
+            echo "New comment '$title' has been added";
+        }else
+        {
+            echo "Cannot add the comment '$title':" .$mysqli-&gt;error;
+        }
+
+       
+    }
+    	$postid = $_REQUEST["postid"];
+	$commenter=$_REQUEST["commenter"];
+	$title=$_REQUEST["title"];
+	$content=$_REQUEST["content"];
+	
+
+	echo "debug&gt; commenter= $commenter; title=$title; content=$content; postid=$postid <br>";
+
+	if(isset($commenter) and isset($title) and isset($content) and isset($postid)){
+	
+        commentpost($commenter, $title, $content,$postid);
+
+
+	
+    }
+       
+?&gt;
+
+
+
+</body></html>
